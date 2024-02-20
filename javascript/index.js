@@ -1,19 +1,16 @@
-let nome = 'Carol'
-let sobrenome = 'Silva'
-let anoAtual = 2024
-let idadeFinal = 26
+let nome = prompt('Insira seu nome aqui:');
+let sobrenome = 'Silva';
+let anoAtual = 2024;
+let idadeFinal = 26;
 
-const nomeCompleto = `${nome} ${sobrenome}`
-const anoNascimento = anoAtual - idadeFinal
+const nomeCompleto = `${nome} ${sobrenome}`;
+const anoNascimento = anoAtual - idadeFinal;
 
-console.log(nomeCompleto)
-console.log(anoNascimento)
+console.log(`Nome completo: ${nomeCompleto}`);
+console.log(`Ano de nascimento: ${anoNascimento}`);
 
+let numero1 = prompt('Insira o número 1:');
+let numero2 = prompt('Insira o número 2:');
 
-
-let numero1 = prompt('insira o numero 1 aqui')
-let numero2 = prompt('insira o numero 2 aqui')
-
-console.log(parseInt(numero1) + parseInt(numero2))
-
-alert('O valor é:' + parseInt(numero1) * parseInt(numero2))
+console.log(`A soma dos números é: ${parseInt(numero1) + parseInt(numero2)}`);
+alert(`O produto dos números é: ${parseInt(numero1) * parseInt(numero2)}`);
