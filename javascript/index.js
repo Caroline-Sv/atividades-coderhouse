@@ -1,16 +1,33 @@
-let nome = prompt('Insira seu nome aqui:');
-let sobrenome = 'Silva';
-let anoAtual = 2024;
-let idadeFinal = 26;
 
-const nomeCompleto = `${nome} ${sobrenome}`;
-const anoNascimento = anoAtual - idadeFinal;
+function obterDadosUsuario() {
+    const peso = parseFloat(prompt("Digite seu peso em quilogramas:"));
+    let alturaInput = prompt("Digite sua altura em metros (use vírgula para decimais):");
+    alturaInput = alturaInput.replace(",", ".");
+    const altura = parseFloat(alturaInput);
+    return { peso, altura };
+}
 
-console.log(`Nome completo: ${nomeCompleto}`);
-console.log(`Ano de nascimento: ${anoNascimento}`);
+function calcularIMC(peso, altura) {
+    return peso / (altura * altura);
+}
 
-let numero1 = prompt('Insira o número 1:');
-let numero2 = prompt('Insira o número 2:');
+function determinarEstadoPeso(imc) {
+    if (imc < 18.5) {
+        return "Abaixo do peso";
+    } else if (imc >= 18.5 && imc <= 24.9) {
+        return "Peso normal";
+    } else if (imc >= 25 && imc <= 29.9) {
+        return "Sobrepeso";
+    } else {
+        return "Obesidade";
+    }
+}
 
-console.log(`A soma dos números é: ${parseInt(numero1) + parseInt(numero2)}`);
-alert(`O produto dos números é: ${parseInt(numero1) * parseInt(numero2)}`);
+function calcularIMCUsuario() {
+    const { peso, altura } = obterDadosUsuario();
+    const imc = calcularIMC(peso, altura);
+    const estadoPeso = determinarEstadoPeso(imc);
+    console.log(`Seu IMC é ${imc.toFixed(2)} e você está classificado como: ${estadoPeso}`);
+}
+
+calcularIMCUsuario();
