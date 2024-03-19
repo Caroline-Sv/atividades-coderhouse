@@ -1,33 +1,26 @@
+let marca = "Toyota";
+        let cor = "Azul";
+        let velocidadeMaxima = 180;
+        let velocidadeAtual = 0;
 
-function obterDadosUsuario() {
-    const peso = parseFloat(prompt("Digite seu peso em quilogramas:"));
-    let alturaInput = prompt("Digite sua altura em metros (use vírgula para decimais):");
-    alturaInput = alturaInput.replace(",", ".");
-    const altura = parseFloat(alturaInput);
-    return { peso, altura };
-}
+        function acelerar() {
+            velocidadeAtual += 10;
+            mostrarInfo();
+            console.log("O carro acelerou. Velocidade atual: " + velocidadeAtual + " km/h");
+        }
 
-function calcularIMC(peso, altura) {
-    return peso / (altura * altura);
-}
+        function frear() {
+            velocidadeAtual -= 5;
+            mostrarInfo();
+            console.log("O carro freou. Velocidade atual: " + velocidadeAtual + " km/h");
+        }
 
-function determinarEstadoPeso(imc) {
-    if (imc < 18.5) {
-        return "Abaixo do peso";
-    } else if (imc >= 18.5 && imc <= 24.9) {
-        return "Peso normal";
-    } else if (imc >= 25 && imc <= 29.9) {
-        return "Sobrepeso";
-    } else {
-        return "Obesidade";
-    }
-}
-
-function calcularIMCUsuario() {
-    const { peso, altura } = obterDadosUsuario();
-    const imc = calcularIMC(peso, altura);
-    const estadoPeso = determinarEstadoPeso(imc);
-    console.log(`Seu IMC é ${imc.toFixed(2)} e você está classificado como: ${estadoPeso}`);
-}
-
-calcularIMCUsuario();
+        function mostrarInfo() {
+            let infoDiv = document.getElementById("info");
+            let infoHTML = "<p>Marca: " + marca + "</p>";
+            infoHTML += "<p>Cor: " + cor + "</p>";
+            infoHTML += "<p>Velocidade Atual: " + velocidadeAtual + " km/h</p>";
+            infoDiv.innerHTML = infoHTML;
+        }
+        
+        mostrarInfo();
