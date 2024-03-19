@@ -1,15 +1,26 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de Carro</title>
-</head>
-<body>
-    <h1>Simulador de Carro</h1>
-    <button onclick="acelerar()">Acelerar</button>
-    <button onclick="frear()">Frear</button>
-    <div id="info"></div>
+let marca = "Toyota";
+        let cor = "Azul";
+        let velocidadeMaxima = 180;
+        let velocidadeAtual = 0;
 
-</body>
-</html>
+        function acelerar() {
+            velocidadeAtual += 10;
+            mostrarInfo();
+            console.log("O carro acelerou. Velocidade atual: " + velocidadeAtual + " km/h");
+        }
+
+        function frear() {
+            velocidadeAtual -= 5;
+            mostrarInfo();
+            console.log("O carro freou. Velocidade atual: " + velocidadeAtual + " km/h");
+        }
+
+        function mostrarInfo() {
+            let infoDiv = document.getElementById("info");
+            let infoHTML = "<p>Marca: " + marca + "</p>";
+            infoHTML += "<p>Cor: " + cor + "</p>";
+            infoHTML += "<p>Velocidade Atual: " + velocidadeAtual + " km/h</p>";
+            infoDiv.innerHTML = infoHTML;
+        }
+        
+        mostrarInfo();
