@@ -1,26 +1,46 @@
-let marca = "Toyota";
-        let cor = "Azul";
-        let velocidadeMaxima = 180;
-        let velocidadeAtual = 0;
 
-        function acelerar() {
-            velocidadeAtual += 10;
-            mostrarInfo();
-            console.log("O carro acelerou. Velocidade atual: " + velocidadeAtual + " km/h");
-        }
+let simulador = {
+    marca: "Toyota",
+    cor: "Vermelho",
+    velocidadeMaxima: 180,
+    velocidadeAtual: 0,
 
-        function frear() {
-            velocidadeAtual -= 5;
-            mostrarInfo();
-            console.log("O carro freou. Velocidade atual: " + velocidadeAtual + " km/h");
-        }
+    construtor: function(marca, cor, velocidadeMaxima) {
+        this.marca = marca;
+        this.cor = cor;
+        this.velocidadeMaxima = velocidadeMaxima;
+        this.velocidadeAtual = 0;
+    },
 
-        function mostrarInfo() {
-            let infoDiv = document.getElementById("info");
-            let infoHTML = "<p>Marca: " + marca + "</p>";
-            infoHTML += "<p>Cor: " + cor + "</p>";
-            infoHTML += "<p>Velocidade Atual: " + velocidadeAtual + " km/h</p>";
-            infoDiv.innerHTML = infoHTML;
+    acelerar: function() {
+        if (this.velocidadeAtual + 10 <= this.velocidadeMaxima) {
+            this.velocidadeAtual += 10;
         }
-        
-        mostrarInfo();
+        this.mostrarInfo();
+        console.log("O carro acelerou. Velocidade atual: " + this.velocidadeAtual + " km/h");
+    },
+
+    frear: function() {
+        if (this.velocidadeAtual - 5 >= 0) {
+            this.velocidadeAtual -= 5;
+        } else {
+            this.velocidadeAtual = 0;
+        }
+        this.mostrarInfo();
+        console.log("O carro freou. Velocidade atual: " + this.velocidadeAtual + " km/h");
+    },
+
+    mostrarInfo: function() {
+        let infoDiv = document.getElementById("info");
+        let infoHTML = "<p>Marca: " + this.marca + "</p>";
+        infoHTML += "<p>Cor: " + this.cor + "</p>";
+        infoHTML += "<p>Velocidade Atual: " + this.velocidadeAtual + " km/h</p>";
+        infoDiv.innerHTML = infoHTML;
+    }
+};
+
+
+simulador.construtor("Toyota", "Vermelho", 180);
+
+
+simulador.mostrarInfo();
